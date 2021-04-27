@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                
-                'mvn -Dmaven.test.failure.ignore=true clean package'
+               bat 'mvn -Dmaven.test.failure.ignore=true clean package'
                }
                }
                
@@ -13,13 +13,13 @@ pipeline {
        stage('Building image') {
             steps{
                 
-          'docker build -f src/main/docker/Dockerfile.jvm -t quarkus/hello-world-jvm .'
+          bat 'docker build -f src/main/docker/Dockerfile.jvm -t quarkus/hello-world-jvm .'
             }
             }
             stage('Deploying into k8s'){
             steps{
                    
-                  'kubectl apply -f deployment.yaml'
+                  bat 'kubectl apply -f deployment.yaml'
                         }
             }
             
