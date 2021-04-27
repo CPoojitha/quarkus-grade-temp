@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               bat 'mvnw package'
+               
                bat 'mvn -Dmaven.test.failure.ignore=true clean package'
                }
                }
